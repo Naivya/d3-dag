@@ -197,12 +197,14 @@ function buildOperator<
       // add dummy nodes in place of children
       node.dataChildren = node.dataChildren.map((link) => {
         const clayer = link.child.layer;
-        if (clayer <= nlayer) {
-          throw new Error(
-            `layering left child node "${link.child.id}" (${clayer}) ` +
-              `with a greater or equal layer to parent node "${node.id}" (${nlayer})`
-          );
-        }
+
+        // Disabling, need the same layer to be shared
+        // if (clayer <= nlayer) {
+        //   throw new Error(
+        //     `layering left child node "${link.child.id}" (${clayer}) ` +
+        //       `with a greater or equal layer to parent node "${node.id}" (${nlayer})`
+        //   );
+        // }
         // NOTE this cast breaks the type system, but sugiyama basically
         // needs to do that, so...
         let last = link.child as DummyNode;

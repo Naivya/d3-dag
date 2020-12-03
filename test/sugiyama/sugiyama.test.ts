@@ -183,18 +183,18 @@ test("sugiyama() throws with invalid layers", () => {
   );
 });
 
-test("sugiyama() throws with flat layering", () => {
-  // layers are weird
-  const dag = dummy();
-  const layout = sugiyama().layering((dag) => {
-    for (const node of dag) {
-      node.layer = 0;
-    }
-  });
-  expect(() => layout(dag)).toThrow(
-    `layering left child node "1" (0) with a greater or equal layer to parent node "0" (0)`
-  );
-});
+// test("sugiyama() throws with flat layering", () => {
+//   // layers are weird
+//   const dag = dummy();
+//   const layout = sugiyama().layering((dag) => {
+//     for (const node of dag) {
+//       node.layer = 0;
+//     }
+//   });
+//   expect(() => layout(dag)).toThrow(
+//     `layering left child node "1" (0) with a greater or equal layer to parent node "0" (0)`
+//   );
+// });
 
 test("sugiyama() throws with noop coord", () => {
   const dag = dummy();
